@@ -10,12 +10,13 @@ import (
 )
 
 type Feed struct {
-	ID        uuid.UUID        `json:"id"`
-	CreatedAt pgtype.Timestamp `json:"created_at"`
-	UpdatedAt pgtype.Timestamp `json:"updated_at"`
-	Name      string           `json:"name"`
-	Url       string           `json:"url"`
-	UserID    uuid.UUID        `json:"user_id"`
+	ID            uuid.UUID        `json:"id"`
+	CreatedAt     pgtype.Timestamp `json:"created_at"`
+	UpdatedAt     pgtype.Timestamp `json:"updated_at"`
+	Name          string           `json:"name"`
+	Url           string           `json:"url"`
+	UserID        uuid.UUID        `json:"user_id"`
+	LastFetchedAt pgtype.Timestamp `json:"last_fetched_at"`
 }
 
 type FeedFollow struct {
@@ -24,6 +25,17 @@ type FeedFollow struct {
 	UpdatedAt pgtype.Timestamp `json:"updated_at"`
 	UserID    uuid.UUID        `json:"user_id"`
 	FeedID    uuid.UUID        `json:"feed_id"`
+}
+
+type Post struct {
+	ID          uuid.UUID        `json:"id"`
+	CreatedAt   pgtype.Timestamp `json:"created_at"`
+	UpdatedAt   pgtype.Timestamp `json:"updated_at"`
+	Title       string           `json:"title"`
+	Description pgtype.Text      `json:"description"`
+	PublishedAt pgtype.Timestamp `json:"published_at"`
+	Url         string           `json:"url"`
+	FeedID      uuid.UUID        `json:"feed_id"`
 }
 
 type User struct {
